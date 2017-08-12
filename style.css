@@ -1,0 +1,17 @@
+body {
+	text-align: center;
+}
+
+.container {
+	max-width: 720px;
+	margin: 20px auto;
+}
+
+.square {
+	width: 20%;
+	background: purple;
+	padding-bottom: 20%;
+	float: left;
+	margin: 1.66%;
+	border-radius: 15%;
+}
