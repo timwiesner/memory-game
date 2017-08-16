@@ -1,0 +1,37 @@
+body {
+	
+}
+
+.intro {
+	text-align: center;
+	color: #462e47;
+}
+
+.container {
+	max-width: 710px;
+	margin: auto;
+	overflow: auto;
+	background: #cb2d3e;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #ef473a, #cb2d3e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.square {
+	width: 144px;
+	height: 144px;
+	background: #2e3c47;
+	float: left;
+	margin: 1.66%;
+	border-radius: 15%;
+	display: inline-block;
+	text-align: center;
+}
+
+.square i {
+	font-size: 40px;
+	line-height: 50px;
+	vertical-align: middle;
+	margin-top: 42px;
+	color: white;
+}
+
