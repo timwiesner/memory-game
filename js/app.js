@@ -26,8 +26,10 @@ var icons = [bus, plane, bitcoin, sissors, piper, space, cutlery, camera, bus2, 
 shuffle(icons);
 fillSquares(icons);
 
-squares.click(function(){
-  $('.square i').toggleClass('hidden');
+$(function () {
+  squares.click(function(){
+    $(this).children().toggleClass('hidden');
+  });
 });
 
 
@@ -42,8 +44,8 @@ function shuffle(arr) {
   }
 }
 
-
 function fillSquares(arr) {
+  // Takes shuffled 'icons' array and places them in divs
 	squares.each(function(i) {
 		$(this).append(arr[i]);
 	});
@@ -51,6 +53,13 @@ function fillSquares(arr) {
 
 
 
+
+
+
+// Shows ALL icons
+// squares.click(function(){
+//   $('.square i').toggleClass('hidden');
+// });
 
 
 
