@@ -1,25 +1,24 @@
 body {
-	
+	background-color: #272727;
 }
 
 .intro {
 	text-align: center;
-	color: #462e47;
+	color: #14a76c;
 }
 
 .container {
 	max-width: 710px;
+	max-height: 710px;
 	margin: auto;
 	overflow: auto;
-	background: #cb2d3e;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #ef473a, #cb2d3e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #4056a1;
 }
 
 .square {
-	width: 144px;
-	height: 144px;
-	background: #2e3c47;
+	width: 152px;
+	height: 152px;
+	background: #14a76c;
 	float: left;
 	margin: 1.66%;
 	border-radius: 15%;
@@ -35,3 +34,6 @@ body {
 	color: white;
 }
 
+.hidden {
+	visibility: hidden;
+}
