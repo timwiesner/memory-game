@@ -1,24 +1,26 @@
 body {
-	background-color: #272727;
+	background-color: #70c1b3;
 }
 
 .intro {
 	text-align: center;
-	color: #14a76c;
+	color: #50514f;
+	font-family: 'Nunito', sans-serif;
 }
 
 .container {
-	max-width: 710px;
+	max-width: 705px;
 	max-height: 710px;
 	margin: auto;
 	overflow: auto;
-	background: #4056a1;
+	background: #f25f5c;
+	border-radius: 3%;
 }
 
 .square {
 	width: 152px;
 	height: 152px;
-	background: #14a76c;
+	background: #247ba0;
 	float: left;
 	margin: 1.66%;
 	border-radius: 15%;
