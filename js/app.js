@@ -1,6 +1,6 @@
 var container = $('.container');
 var squares = $('.square');
-
+var icon = $('.square i');
 
 var bus = $('<i class="fa fa-ambulance hidden" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane hidden" aria-hidden="true"></i>');
@@ -26,11 +26,11 @@ var icons = [bus, plane, bitcoin, sissors, piper, space, cutlery, camera, bus2, 
 shuffle(icons);
 fillSquares(icons);
 
-$(function () {
-  squares.click(function(){
-    $(this).children().toggleClass('hidden');
-  });
+squares.click(function(){
+  $(this).children().toggleClass('hidden');
+  console.log(squares.html());
 });
+
 
 
 function shuffle(arr) {
@@ -59,6 +59,14 @@ function fillSquares(arr) {
 // Shows ALL icons
 // squares.click(function(){
 //   $('.square i').toggleClass('hidden');
+// });
+
+
+// Document ready show icons function
+// $(function () {
+//   squares.click(function(){
+//     $(this).children().toggleClass('hidden');
+//   });
 // });
 
 
