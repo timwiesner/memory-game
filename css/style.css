@@ -34,8 +34,13 @@ body {
 	vertical-align: middle;
 	margin-top: 42px;
 	color: white;
-}
-
-.hidden {
 	visibility: hidden;
 }
+
+.show {
+	visibility: visible !important;
+}
+
+/*.hidden {
+	visibility: hidden;
+}*/

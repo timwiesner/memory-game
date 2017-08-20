@@ -2,34 +2,58 @@ var container = $('.container');
 var squares = $('.square');
 var icon = $('.square i');
 
-var bus = $('<i class="fa fa-ambulance hidden" aria-hidden="true"></i>');
-var plane = $('<i class="fa fa-plane hidden" aria-hidden="true"></i>');
-var bitcoin = $('<i class="fa fa-btc hidden" aria-hidden="true"></i>');
-var sissors = $('<i class="fa fa-scissors hidden" aria-hidden="true"></i>');
-var piper = $('<i class="fa fa-pied-piper-alt hidden" aria-hidden="true"></i>');
-var space = $('<i class="fa fa-space-shuttle hidden" aria-hidden="true"></i>');
-var cutlery = $('<i class="fa fa-cutlery hidden" aria-hidden="true"></i>');
-var camera = $('<i class="fa fa-camera-retro hidden" aria-hidden="true"></i>');
+var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
+var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
+var bitcoin = $('<i class="fa fa-btc" aria-hidden="true"></i>');
+var sissors = $('<i class="fa fa-scissors" aria-hidden="true"></i>');
+var piper = $('<i class="fa fa-pied-piper-alt" aria-hidden="true"></i>');
+var space = $('<i class="fa fa-space-shuttle" aria-hidden="true"></i>');
+var cutlery = $('<i class="fa fa-cutlery" aria-hidden="true"></i>');
+var camera = $('<i class="fa fa-camera-retro" aria-hidden="true"></i>');
 
-var bus2 = $('<i class="fa fa-ambulance hidden" aria-hidden="true"></i>');
-var plane2 = $('<i class="fa fa-plane hidden" aria-hidden="true"></i>');
-var bitcoin2 = $('<i class="fa fa-btc hidden" aria-hidden="true"></i>');
-var sissors2 = $('<i class="fa fa-scissors hidden" aria-hidden="true"></i>');
-var piper2 = $('<i class="fa fa-pied-piper-alt hidden" aria-hidden="true"></i>');
-var space2 = $('<i class="fa fa-space-shuttle hidden" aria-hidden="true"></i>');
-var cutlery2 = $('<i class="fa fa-cutlery hidden" aria-hidden="true"></i>');
-var camera2 = $('<i class="fa fa-camera-retro hidden" aria-hidden="true"></i>');
+var bus2 = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
+var plane2 = $('<i class="fa fa-plane" aria-hidden="true"></i>');
+var bitcoin2 = $('<i class="fa fa-btc" aria-hidden="true"></i>');
+var sissors2 = $('<i class="fa fa-scissors" aria-hidden="true"></i>');
+var piper2 = $('<i class="fa fa-pied-piper-alt" aria-hidden="true"></i>');
+var space2 = $('<i class="fa fa-space-shuttle" aria-hidden="true"></i>');
+var cutlery2 = $('<i class="fa fa-cutlery" aria-hidden="true"></i>');
+var camera2 = $('<i class="fa fa-camera-retro" aria-hidden="true"></i>');
 
 
 var icons = [bus, plane, bitcoin, sissors, piper, space, cutlery, camera, bus2, plane2, bitcoin2, sissors2, piper2, space2, cutlery2, camera2];
+var answers = [];
+
+var clickedOne = undefined;
+var clickedTwo = undefined;
+
 
 shuffle(icons);
 fillSquares(icons);
 
+
 squares.click(function(){
-  $(this).children().toggleClass('hidden');
-  console.log(squares.html());
+  // Shows icon when square is clicked
+  $(this).children().toggleClass('show');
+  if (clickedOne === undefined){
+    clickedOne = $('.show')[0];
+  } else {
+    clickedTwo = $('.show')[1];
+    answers.push(clickedOne, clickedTwo);
+    console.log(answers[0]);
+    console.log(answers[1]);
+    checkAnswers(answers);
+  }
 });
+
+function checkAnswers(answers) {
+  if ($(answers[0]) === $(answers[1])){
+    console.log('Match!!!');
+  } else {
+    console.log('No Dice');
+    // $('.square i').removeClass('show');
+  }
+}
 
 
 
@@ -53,26 +77,10 @@ function fillSquares(arr) {
 
 
 
-
-
-
-// Shows ALL icons
-// squares.click(function(){
-//   $('.square i').toggleClass('hidden');
-// });
-
-
-// Document ready show icons function
-// $(function () {
-//   squares.click(function(){
-//     $(this).children().toggleClass('hidden');
-//   });
-// });
-
-
-
-
-
+// Make square divs with js
+// for (var i = 0; i < icons.length; i++){
+//   $('.container').append('<div class="square"></div>');
+// }
 
 
 
