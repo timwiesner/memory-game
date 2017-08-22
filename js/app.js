@@ -1,6 +1,6 @@
 var container = $('.container');
 var squares = $('.square');
-var icon = $('.square i');
+
 
 var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
@@ -22,42 +22,33 @@ var camera2 = $('<i class="fa fa-camera-retro" aria-hidden="true"></i>');
 
 
 var icons = [bus, plane, bitcoin, sissors, piper, space, cutlery, camera, bus2, plane2, bitcoin2, sissors2, piper2, space2, cutlery2, camera2];
-var answers = [];
 
-var clickedOne = undefined;
-var clickedTwo = undefined;
 
 
 shuffle(icons);
 fillSquares(icons);
 
+var clickedOne, clickedTwo;
 
 squares.click(function(){
-  // Shows icon when square is clicked
-  $(this).children().toggleClass('show');
-  if (clickedOne === undefined){
-    clickedOne = $('.show')[0];
+  if (clickedOne === undefined) {
+    clickedOne = $(this).children().toggleClass('show');
+    clickedOne = $(clickedOne)["0"].classList[1];
   } else {
-    clickedTwo = $('.show')[1];
-    answers.push(clickedOne, clickedTwo);
-    console.log(answers[0]);
-    console.log(answers[1]);
-    checkAnswers(answers);
+    clickedTwo = $(this).children().toggleClass('show');
+    clickedTwo = $(clickedTwo)["0"].classList[1];
+
+    if (clickedOne === clickedTwo) {
+      console.log('Success');
+    } else {
+      console.log('Fuck you');
+    }
   }
 });
 
-function checkAnswers(answers) {
-  if ($(answers[0]) === $(answers[1])){
-    console.log('Match!!!');
-  } else {
-    console.log('No Dice');
-    // $('.square i').removeClass('show');
-  }
-}
 
 
-
-function shuffle(arr) {
+function shuffle(arr){
   // Takes 'icons' array as inputs using the Fisher-Yates Shuffle
   var rando, temp;
   for (var i = arr.length; i > 0; i--) {
@@ -74,7 +65,6 @@ function fillSquares(arr) {
 		$(this).append(arr[i]);
 	});
 }
-
 
 
 // Make square divs with js
