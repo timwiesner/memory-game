@@ -38,21 +38,23 @@ squares.click(function(){
     clickedTwo = $(this).children().addClass('show');
     // set answer to specific class
     answerTwo = $(clickedTwo)['0'].classList[1];
+    // use checkAnswers to determine if match
     checkAnswers(answerOne, answerTwo);
   }
 });
 
 function checkAnswers(one, two){
-  // if classes are =
   if (answerOne === answerTwo) {
-    console.log('Success');
+    // return clickedOne and clickedTwo to undefined state
     clickedOne = undefined;
     clickedTwo = undefined;
   } else {
-    console.log('Fuck you');
+    // if not =, fade away icons
     setTimeout(function(){
+      // remove .show from clickedOne and clickedTwo
       clickedOne.removeClass('show');
       clickedTwo.removeClass('show');
+      // return to undefined state after .show is removed
       clickedOne = undefined;
       clickedTwo = undefined;
     }, 500);
@@ -74,9 +76,9 @@ function shuffle(arr){
 
 function fillSquares(arr) {
   // Takes shuffled 'icons' array and places them in divs
-	squares.each(function(i) {
-		$(this).append(arr[i]);
-	});
+  squares.each(function(i) {
+    $(this).append(arr[i]);
+  });
 }
 
 
