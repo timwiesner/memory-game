@@ -27,22 +27,21 @@ fillSquares(icons);
 
 var clicks = 0;
 var clickedOne, clickedTwo;
+var timer = new Date;
 
 squares.click(function(){
   counter();
-  // targets child element of clicked square
-  var child = $(this).children();
   // determine if icon is already shown
-  if (!child.hasClass('show')){
+  if (!$(this).children().hasClass('show')){
     // check to see if clickedOne is undefined 
     if (clickedOne === undefined) {
       // if yes, clickedOne = child i of square with class 'show'
-      clickedOne = child.addClass('show');
+      clickedOne = $(this).children().addClass('show');
       // access clickedOne object, set answer = specific class
       answerOne = $(clickedOne)['0'].classList[1];
     } else {
       // else place clicked in clickedTwo
-      clickedTwo = child.addClass('show');
+      clickedTwo = $(this).children().addClass('show');
       // set answer to specific class
       answerTwo = $(clickedTwo)['0'].classList[1];
       // use checkAnswers to determine if match
@@ -53,10 +52,17 @@ squares.click(function(){
   }
 });
 
+$('.fa-play').click(function(){
+  setInterval(function(){
+    $('#timer').html(Math.floor((new Date - timer) / 1000) + " seconds");
+  }, 1000);
+});
+
+
 function counter(){
-  if (clicks < 10){
+  if (clicks < 20){
     $('#stars').html('***');
-  } else if (clicks < 20){
+  } else if (clicks < 32){
     $('#stars').html('**');
   } else {
     $('#stars').html('*');
@@ -83,7 +89,6 @@ function checkAnswers(answerOne, answerTwo){
     clickedOne = undefined;
     clickedTwo = undefined;
   } else {
-    // if not =, fade away icons
     setTimeout(function(){
       // remove .show from clickedOne and clickedTwo
       clickedOne.removeClass('show');
@@ -94,6 +99,7 @@ function checkAnswers(answerOne, answerTwo){
     }, 500);
   }
 }
+
 
 function misClick(){
   alert('Please click a blank square');
@@ -119,8 +125,9 @@ function shuffle(arr){
 }
 
 function fillSquares(arr) {
-  // Takes shuffled 'icons' array and places them in divs
+  // loops through each square
   squares.each(function(i) {
+    // places shuffled icons in squares
     $(this).append(arr[i]);
   });
 }
