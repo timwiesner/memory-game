@@ -29,7 +29,7 @@ var clicks = 0;
 var clickedOne, clickedTwo;
 
 squares.click(function(){
-  clickCounter();
+  counter();
   // targets child element of clicked square
   var child = $(this).children();
   // determine if icon is already shown
@@ -53,7 +53,14 @@ squares.click(function(){
   }
 });
 
-function clickCounter(){
+function counter(){
+  if (clicks < 10){
+    $('#stars').html('***');
+  } else if (clicks < 20){
+    $('#stars').html('**');
+  } else {
+    $('#stars').html('*');
+  }
   clicks++;
   $('#clicks').html(clicks);
 }
@@ -65,6 +72,7 @@ restart.click(function(){
   clickedTwo = undefined;
   clicks = 0;
   $('#clicks').html('0');
+  $('#stars').html('***');
   shuffle(icons);
   fillSquares(icons);
 });
