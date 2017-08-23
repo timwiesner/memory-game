@@ -31,17 +31,29 @@ fillSquares(icons);
 var clickedOne, clickedTwo;
 
 squares.click(function(){
+  // check to see if clickedOne is undefined
   if (clickedOne === undefined) {
-    clickedOne = $(this).children().toggleClass('show');
-    clickedOne = $(clickedOne)["0"].classList[1];
+    // if yes, clickedOne = child i of square with class 'show'
+    clickedOne = $(this).children().addClass('show');
+    // access clickedOne object, set answer = specific class
+    answerOne = $(clickedOne)['0'].classList[1];
   } else {
-    clickedTwo = $(this).children().toggleClass('show');
-    clickedTwo = $(clickedTwo)["0"].classList[1];
+    // else place clicked in clickedTwo
+    clickedTwo = $(this).children().addClass('show');
+    // set answer to specific class
+    answerTwo = $(clickedTwo)['0'].classList[1];
 
-    if (clickedOne === clickedTwo) {
+    // if classes are =
+    if (answerOne === answerTwo) {
       console.log('Success');
+      clickedOne = undefined;
+      clickedTwo = undefined;
     } else {
       console.log('Fuck you');
+      clickedOne.removeClass('show');
+      // setTimeout(function(){
+      //   squares.children().toggleClass('show');
+      // }, 500);
     }
   }
 });
