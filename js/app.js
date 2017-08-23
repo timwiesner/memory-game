@@ -25,9 +25,11 @@ var icons = [bus, plane, bitcoin, sissors, piper, space, cutlery, camera, bus2, 
 shuffle(icons);
 fillSquares(icons);
 
+var clicks = 0;
 var clickedOne, clickedTwo;
 
 squares.click(function(){
+  clickCounter();
   // targets child element of clicked square
   var child = $(this).children();
   // determine if icon is already shown
@@ -47,15 +49,22 @@ squares.click(function(){
       checkAnswers(answerOne, answerTwo);
     }
   } else {
-    // call to reset clickedOne
     misClick();
   }
 });
+
+function clickCounter(){
+  clicks++;
+  $('#clicks').html(clicks);
+}
+
 
 restart.click(function(){
   $('.square i').removeClass('show');
   clickedOne = undefined;
   clickedTwo = undefined;
+  clicks = 0;
+  $('#clicks').html('0');
   shuffle(icons);
   fillSquares(icons);
 });

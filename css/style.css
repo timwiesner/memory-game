@@ -8,6 +8,10 @@ body {
 	font-family: 'Nunito', sans-serif;
 }
 
+#clicks {
+	/*background-color: red;*/
+}
+
 .container {
 	max-width: 705px;
 	max-height: 710px;
