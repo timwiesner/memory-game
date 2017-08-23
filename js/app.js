@@ -1,6 +1,4 @@
-var container = $('.container');
 var squares = $('.square');
-
 
 var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
@@ -20,9 +18,7 @@ var space2 = $('<i class="fa fa-space-shuttle" aria-hidden="true"></i>');
 var cutlery2 = $('<i class="fa fa-cutlery" aria-hidden="true"></i>');
 var camera2 = $('<i class="fa fa-camera-retro" aria-hidden="true"></i>');
 
-
 var icons = [bus, plane, bitcoin, sissors, piper, space, cutlery, camera, bus2, plane2, bitcoin2, sissors2, piper2, space2, cutlery2, camera2];
-
 
 
 shuffle(icons);
@@ -42,21 +38,26 @@ squares.click(function(){
     clickedTwo = $(this).children().addClass('show');
     // set answer to specific class
     answerTwo = $(clickedTwo)['0'].classList[1];
-
-    // if classes are =
-    if (answerOne === answerTwo) {
-      console.log('Success');
-      clickedOne = undefined;
-      clickedTwo = undefined;
-    } else {
-      console.log('Fuck you');
-      clickedOne.removeClass('show');
-      // setTimeout(function(){
-      //   squares.children().toggleClass('show');
-      // }, 500);
-    }
+    checkAnswers(answerOne, answerTwo);
   }
 });
+
+function checkAnswers(one, two){
+  // if classes are =
+  if (answerOne === answerTwo) {
+    console.log('Success');
+    clickedOne = undefined;
+    clickedTwo = undefined;
+  } else {
+    console.log('Fuck you');
+    setTimeout(function(){
+      clickedOne.removeClass('show');
+      clickedTwo.removeClass('show');
+      clickedOne = undefined;
+      clickedTwo = undefined;
+    }, 500);
+  }
+}
 
 
 
@@ -79,10 +80,6 @@ function fillSquares(arr) {
 }
 
 
-// Make square divs with js
-// for (var i = 0; i < icons.length; i++){
-//   $('.container').append('<div class="square"></div>');
-// }
 
 
 
