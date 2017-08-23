@@ -1,5 +1,6 @@
 var squares = $('.square');
 var restart = $('.fa-refresh');
+var play = $('.fa-play');
 
 var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
@@ -27,10 +28,10 @@ fillSquares(icons);
 
 var clicks = 0;
 var clickedOne, clickedTwo;
-var timer = new Date;
+
 
 squares.click(function(){
-  counter();
+  clickCounter();
   // determine if icon is already shown
   if (!$(this).children().hasClass('show')){
     // check to see if clickedOne is undefined 
@@ -52,14 +53,15 @@ squares.click(function(){
   }
 });
 
-$('.fa-play').click(function(){
+play.click(function(){
+  var timer = new Date;
   setInterval(function(){
     $('#timer').html(Math.floor((new Date - timer) / 1000) + " seconds");
   }, 1000);
 });
 
 
-function counter(){
+function clickCounter(){
   if (clicks < 20){
     $('#stars').html('***');
   } else if (clicks < 32){
