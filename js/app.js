@@ -1,4 +1,5 @@
 var squares = $('.square');
+var restart = $('.fa-refresh');
 
 var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
@@ -27,29 +28,40 @@ fillSquares(icons);
 var clickedOne, clickedTwo;
 
 squares.click(function(){
+  // targets child element of clicked square
+  var child = $(this).children();
   // determine if icon is already shown
-  if (!$(this).children().hasClass('show')){
+  if (!child.hasClass('show')){
     // check to see if clickedOne is undefined 
     if (clickedOne === undefined) {
       // if yes, clickedOne = child i of square with class 'show'
-      clickedOne = $(this).children().addClass('show');
+      clickedOne = child.addClass('show');
       // access clickedOne object, set answer = specific class
       answerOne = $(clickedOne)['0'].classList[1];
     } else {
       // else place clicked in clickedTwo
-      clickedTwo = $(this).children().addClass('show');
+      clickedTwo = child.addClass('show');
       // set answer to specific class
       answerTwo = $(clickedTwo)['0'].classList[1];
       // use checkAnswers to determine if match
       checkAnswers(answerOne, answerTwo);
     }
   } else {
+    // call to reset clickedOne
     misClick();
   }
 });
 
-function checkAnswers(one, two){
-  if (one === two) {
+restart.click(function(){
+  $('.square i').removeClass('show');
+  clickedOne = undefined;
+  clickedTwo = undefined;
+  shuffle(icons);
+  fillSquares(icons);
+});
+
+function checkAnswers(answerOne, answerTwo){
+  if (answerOne === answerTwo) {
     // return clickedOne and clickedTwo to undefined state
     clickedOne = undefined;
     clickedTwo = undefined;
@@ -79,6 +91,7 @@ function misClick(){
 
 function shuffle(arr){
   // Takes 'icons' array as inputs using the Fisher-Yates Shuffle
+  // Starter code obtained from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
   var rando, temp;
   for (var i = arr.length; i > 0; i--) {
     rando = Math.floor(Math.random() * i);
