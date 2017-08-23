@@ -27,24 +27,29 @@ fillSquares(icons);
 var clickedOne, clickedTwo;
 
 squares.click(function(){
-  // check to see if clickedOne is undefined
-  if (clickedOne === undefined) {
-    // if yes, clickedOne = child i of square with class 'show'
-    clickedOne = $(this).children().addClass('show');
-    // access clickedOne object, set answer = specific class
-    answerOne = $(clickedOne)['0'].classList[1];
+  // determine if icon is already shown
+  if (!$(this).children().hasClass('show')){
+    // check to see if clickedOne is undefined 
+    if (clickedOne === undefined) {
+      // if yes, clickedOne = child i of square with class 'show'
+      clickedOne = $(this).children().addClass('show');
+      // access clickedOne object, set answer = specific class
+      answerOne = $(clickedOne)['0'].classList[1];
+    } else {
+      // else place clicked in clickedTwo
+      clickedTwo = $(this).children().addClass('show');
+      // set answer to specific class
+      answerTwo = $(clickedTwo)['0'].classList[1];
+      // use checkAnswers to determine if match
+      checkAnswers(answerOne, answerTwo);
+    }
   } else {
-    // else place clicked in clickedTwo
-    clickedTwo = $(this).children().addClass('show');
-    // set answer to specific class
-    answerTwo = $(clickedTwo)['0'].classList[1];
-    // use checkAnswers to determine if match
-    checkAnswers(answerOne, answerTwo);
+    misClick();
   }
 });
 
 function checkAnswers(one, two){
-  if (answerOne === answerTwo) {
+  if (one === two) {
     // return clickedOne and clickedTwo to undefined state
     clickedOne = undefined;
     clickedTwo = undefined;
@@ -61,6 +66,15 @@ function checkAnswers(one, two){
   }
 }
 
+function misClick(){
+  alert('Please click a blank square');
+  setTimeout(function(){
+    // remove .show from clickedOne
+    clickedOne.removeClass('show');
+    // return to undefined state after .show is removed
+    clickedOne = undefined;
+  }, 500);
+}
 
 
 function shuffle(arr){
