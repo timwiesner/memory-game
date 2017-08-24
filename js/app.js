@@ -27,6 +27,7 @@ shuffle(icons);
 fillSquares(icons);
 
 var clicks = 0;
+var score = 0;
 var clickedOne, clickedTwo;
 
 
@@ -53,11 +54,20 @@ squares.click(function(){
   }
 });
 
-play.click(function(){
-  var timer = new Date;
-  setInterval(function(){
-    $('#timer').html(Math.floor((new Date - timer) / 1000) + " seconds");
-  }, 1000);
+// play.click(function(){
+//   var timer = new Date;
+//   setInterval(function(){
+//     $('#timer').html(Math.floor((new Date - timer) / 1000) + " seconds");
+//   }, 1000);
+// });
+
+squares.one('click', function(){
+  if (clicks < 2){
+    var timer = new Date;
+    setInterval(function(){
+      $('#timer').html(Math.floor((new Date - timer) / 1000) + " seconds");
+    }, 1000);
+  }
 });
 
 
@@ -90,6 +100,7 @@ function checkAnswers(answerOne, answerTwo){
     // return clickedOne and clickedTwo to undefined state
     clickedOne = undefined;
     clickedTwo = undefined;
+    trackScore();
   } else {
     setTimeout(function(){
       // remove .show from clickedOne and clickedTwo
@@ -99,6 +110,15 @@ function checkAnswers(answerOne, answerTwo){
       clickedOne = undefined;
       clickedTwo = undefined;
     }, 500);
+  }
+}
+
+function trackScore(){
+  score++;
+  if (score > 7){
+    setTimeout(function(){
+      alert('You Won!!!');
+    }, 1000)
   }
 }
 
@@ -133,8 +153,3 @@ function fillSquares(arr) {
     $(this).append(arr[i]);
   });
 }
-
-
-
-
-
