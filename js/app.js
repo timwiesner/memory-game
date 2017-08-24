@@ -1,6 +1,7 @@
 var squares = $('.square');
 var restart = $('.fa-refresh');
 var play = $('.fa-play');
+var time = $('#timer');
 
 var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
@@ -31,6 +32,7 @@ var score = 0;
 var clickedOne, clickedTwo;
 
 
+// shows icon upon click event
 squares.click(function(){
   clickCounter();
   // determine if icon is already shown
@@ -54,27 +56,28 @@ squares.click(function(){
   }
 });
 
-// play.click(function(){
-//   var timer = new Date;
-//   setInterval(function(){
-//     $('#timer').html(Math.floor((new Date - timer) / 1000) + " seconds");
-//   }, 1000);
-// });
-
+// starts timer when first square is clicked
+// FIX RESTART BUG
+var start;
 squares.one('click', function(){
-  if (clicks < 2){
+  // begins on first clicked square
+  if (clicks === 1){
+    // set timer = new Date
     var timer = new Date;
-    setInterval(function(){
+    // set interval counter
+    start = setInterval(function(){
+      // select timer html, update + 1 second
       $('#timer').html(Math.floor((new Date - timer) / 1000) + " seconds");
     }, 1000);
   }
 });
 
 
+// counts total number of clicks
 function clickCounter(){
-  if (clicks < 20){
+  if (clicks < 30){
     $('#stars').html('***');
-  } else if (clicks < 32){
+  } else if (clicks < 40){
     $('#stars').html('**');
   } else {
     $('#stars').html('*');
@@ -83,18 +86,34 @@ function clickCounter(){
   $('#clicks').html(clicks);
 }
 
+//keeps track of total score
+function trackScore(){
+  score++;
+  if (score > 7){
+    setTimeout(function(){
+      alert("Congratulations!\nYou won the game in " + time.html() + " seconds using " + clicks + " moves!");
+    }, 1000);
+    clearInterval(start);
+  }
+}
 
+
+// restart button handler and logic
 restart.click(function(){
   $('.square i').removeClass('show');
   clickedOne = undefined;
   clickedTwo = undefined;
   clicks = 0;
+  score = 0;
+  $('#timer').html('0 seconds');
+  clearInterval(start);
   $('#clicks').html('0');
   $('#stars').html('***');
   shuffle(icons);
   fillSquares(icons);
 });
 
+// checks answer one against answer two to look for match
 function checkAnswers(answerOne, answerTwo){
   if (answerOne === answerTwo) {
     // return clickedOne and clickedTwo to undefined state
@@ -113,16 +132,7 @@ function checkAnswers(answerOne, answerTwo){
   }
 }
 
-function trackScore(){
-  score++;
-  if (score > 7){
-    setTimeout(function(){
-      alert('You Won!!!');
-    }, 1000)
-  }
-}
-
-
+// is called if player clicks on the same square twice
 function misClick(){
   alert('Please click a blank square');
   setTimeout(function(){
@@ -133,9 +143,8 @@ function misClick(){
   }, 500);
 }
 
-
+// Takes 'icons' array as inputs using the Fisher-Yates Shuffle
 function shuffle(arr){
-  // Takes 'icons' array as inputs using the Fisher-Yates Shuffle
   // Starter code obtained from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
   var rando, temp;
   for (var i = arr.length; i > 0; i--) {
@@ -146,6 +155,7 @@ function shuffle(arr){
   }
 }
 
+// fills squares with appropriate shuffled icons
 function fillSquares(arr) {
   // loops through each square
   squares.each(function(i) {
@@ -153,3 +163,10 @@ function fillSquares(arr) {
     $(this).append(arr[i]);
   });
 }
+
+// play.click(function(){
+//   var timer = new Date;
+//   setInterval(function(){
+//     $('#timer').html(Math.floor((new Date - timer) / 1000) + " seconds");
+//   }, 1000);
+// });
