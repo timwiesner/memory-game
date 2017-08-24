@@ -2,6 +2,7 @@ var squares = $('.square');
 var restart = $('.fa-refresh');
 var play = $('.fa-play');
 var time = $('#timer');
+var stars = $('#stars');
 
 var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
@@ -56,9 +57,9 @@ squares.click(function(){
   }
 });
 
-// starts timer when first square is clicked
-// FIX RESTART BUG
+// define start outside of function so clearInterval can be called
 var start;
+// starts timer when first square is clicked
 squares.one('click', function(){
   // begins on first clicked square
   if (clicks === 1){
@@ -88,15 +89,19 @@ function clickCounter(){
 
 //keeps track of total score
 function trackScore(){
+  // adds one point to score--one for each match
   score++;
+  // initiates upon eight matches
   if (score > 7){
     setTimeout(function(){
-      alert("Congratulations!\nYou won the game in " + time.html() + " seconds using " + clicks + " moves!");
+      alert("Congratulations!\nYou won the game in " + time.html() + 
+        " seconds using " + clicks + " moves with a score of " +
+        stars.html());
     }, 1000);
+    // stop timer
     clearInterval(start);
   }
 }
-
 
 // restart button handler and logic
 restart.click(function(){
