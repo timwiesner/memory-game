@@ -105,15 +105,22 @@ function trackScore(){
 
 // restart button handler and logic
 restart.click(function(){
+  // remove 'show' class from all squares
   $('.square i').removeClass('show');
+  // undefine both clickedOne and clickedTwo
   clickedOne = undefined;
   clickedTwo = undefined;
+  // reset clicks and score to 0
   clicks = 0;
   score = 0;
+  // reset timer
   $('#timer').html('0 seconds');
+  // then, reset interval 
   clearInterval(start);
+  // update 'clicks' and 'stars' html
   $('#clicks').html('0');
   $('#stars').html('***');
+  // reshuffle icons, then fill squares
   shuffle(icons);
   fillSquares(icons);
 });
