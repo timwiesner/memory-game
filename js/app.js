@@ -157,13 +157,13 @@ function misClick(){
 
 // Takes 'icons' array as inputs using the Fisher-Yates Shuffle
 function shuffle(arr){
-  // Starter code obtained from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-  var rando, temp;
+  // Starter code obtained from https://stackoverflow.com/a/2450954/
+  var randomIndex, temporaryValue;
   for (var i = arr.length; i > 0; i--) {
-    rando = Math.floor(Math.random() * i);
-    temp = arr[i - 1];
-    arr[i - 1] = arr[rando];
-    arr[rando] = temp;
+    randomIndex = Math.floor(Math.random() * i);
+    temporaryValue = arr[i - 1];
+    arr[i - 1] = arr[randomIndex];
+    arr[randomIndex] = temporaryValue;
   }
 }
 
@@ -175,10 +175,3 @@ function fillSquares(arr) {
     $(this).append(arr[i]);
   });
 }
-
-// play.click(function(){
-//   var timer = new Date;
-//   setInterval(function(){
-//     $('#timer').html(Math.floor((new Date - timer) / 1000) + " seconds");
-//   }, 1000);
-// });
