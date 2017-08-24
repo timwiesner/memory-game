@@ -28,7 +28,7 @@ var icons = [bus, plane, bitcoin, sissors, piper, space, cutlery, camera, bus2, 
 shuffle(icons);
 fillSquares(icons);
 
-var clicks = 0;
+var moves = 0;
 var score = 0;
 var clickedOne, clickedTwo;
 
@@ -62,7 +62,7 @@ var start;
 // starts timer when first square is clicked
 squares.one('click', function(){
   // begins on first clicked square
-  if (clicks === 1){
+  if (moves === 1){
     // set timer = new Date
     var timer = new Date;
     // set interval counter
@@ -74,17 +74,17 @@ squares.one('click', function(){
 });
 
 
-// counts total number of clicks
+// counts total number of moves
 function clickCounter(){
-  if (clicks < 30){
+  if (moves < 30){
     $('#stars').html('***');
-  } else if (clicks < 40){
+  } else if (moves < 40){
     $('#stars').html('**');
   } else {
     $('#stars').html('*');
   }
-  clicks++;
-  $('#clicks').html(clicks);
+  moves++;
+  $('.moves').html(moves);
 }
 
 //keeps track of total score
@@ -95,7 +95,7 @@ function trackScore(){
   if (score > 7){
     setTimeout(function(){
       alert("Congratulations!\nYou won the game in " + time.html() + 
-        " seconds using " + clicks + " moves with a score of " +
+        " seconds using " + moves + " moves with a score of " +
         stars.html());
     }, 1000);
     // stop timer
@@ -110,15 +110,15 @@ restart.click(function(){
   // undefine both clickedOne and clickedTwo
   clickedOne = undefined;
   clickedTwo = undefined;
-  // reset clicks and score to 0
-  clicks = 0;
+  // reset moves and score to 0
+  moves = 0;
   score = 0;
   // reset timer
   $('#timer').html('0 seconds');
   // then, reset interval 
   clearInterval(start);
-  // update 'clicks' and 'stars' html
-  $('#clicks').html('0');
+  // update 'moves' and 'stars' html
+  $('.moves').html('0');
   $('#stars').html('***');
   // reshuffle icons, then fill squares
   shuffle(icons);
@@ -144,7 +144,7 @@ function checkAnswers(answerOne, answerTwo){
   }
 }
 
-// is called if player clicks on the same square twice
+// is called if player moves on the same square twice
 function misClick(){
   alert('Please click a blank square');
   setTimeout(function(){

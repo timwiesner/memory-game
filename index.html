@@ -9,21 +9,30 @@
 
 	</head>
 	<body>
-		<div class="intro">
+		<div class="container">
 			<header>
 				<h1>Memory Game</h1>
 			</header>
 
-			
-			<button><i class="fa fa-refresh" aria-hidden="true"></i></button>
+			<section class="score-panel">
+				<ul class="stars">
+					<li><i class="fa fa-star"></i></li>
+      		<li><i class="fa fa-star"></i></li>
+      		<li><i class="fa fa-star"></i></li>
+				</ul>
 
-			<p>Clicks: <span id="clicks">0</span></p>
-			<p>Stars: <span id="stars">***</span></p>
-			<p>Time Elapsed: <span id="timer">0 seconds</span></p>
+				<span class="moves">0</span> Moves
+
+				<div class="restart">
+					<i class="fa fa-refresh"></i>
+				</div>
+				<p>Time Elapsed: <span id="timer">0 seconds</span></p>
+			</section>
 		</div>
 		
+		
 
-		<div class="container">
+		<div class="deck">
 			<div class="square"></div>
 			<div class="square"></div>
 			<div class="square"></div>

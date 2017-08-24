@@ -1,18 +1,70 @@
-body {
-	background-color: #70c1b3;
+html {
+    box-sizing: border-box;
 }
 
-.intro {
-	text-align: center;
-	color: #50514f;
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #70c1b3;
 	font-family: 'Nunito', sans-serif;
 }
 
-#clicks {
-	/*background-color: red;*/
-}
+/*h1 {
+	color: #50514f;
+}*/
 
 .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+	border: none;
+	background-color: none;
+}
+
+/*
+Styles for Score Panel
+*/
+.score-panel {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
+
+
+/*
+Style for Deck of Cards
+*/
+.deck {
 	max-width: 705px;
 	max-height: 710px;
 	margin: auto;
@@ -44,7 +96,3 @@ body {
 .show {
 	visibility: visible !important;
 }
-
-/*.hidden {
-	visibility: hidden;
-}*/
