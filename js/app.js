@@ -80,9 +80,9 @@ function clickCounter(){
     $('.moves').html(moves + " Move");
   } else {
     $('.moves').html(moves + " Moves");
-    if (moves > 4 && moves < 8){
+    if (moves > 26 && moves < 32){
       star.first().removeClass();
-    } else if (moves > 8){
+    } else if (moves > 32){
       star.last().removeClass();
     }
   } 
