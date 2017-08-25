@@ -1,7 +1,7 @@
 var squares = $('.square');
 var restart = $('.fa-refresh');
 var play = $('.fa-play');
-var time = $('#timer');
+var time = $('.timer');
 var star = $('.fa-star');
 
 // var displayStar = $('<i class="fa fa-star"></i>');
@@ -71,11 +71,11 @@ squares.one('click', function(){
     // set interval counter
     start = setInterval(function(){
       // select timer html, update + 1 second
-      $('#timer').html(Math.floor((new Date - timer) / 1000) + " seconds");
+      time.html(Math.floor((new Date - timer) / 1000) + " seconds");
     }, 1000);
   }
 });
-// To Do: Fix Star Reset
+
 // counts total number of moves
 function clickCounter(){
   moves++;
@@ -91,6 +91,7 @@ function clickCounter(){
   } 
 }
 
+// TO DO: Fix Game-Win Message
 //keeps track of total score
 function trackScore(){
   // adds one point to score--one for each match
@@ -107,6 +108,7 @@ function trackScore(){
   }
 }
 
+// TO DO: Fix Buggy Clock
 // restart button handler and logic
 restart.click(function(){
   // remove 'show' class from all squares
@@ -118,11 +120,11 @@ restart.click(function(){
   moves = 0;
   score = 0;
   // reset timer
-  $('#timer').html('0 seconds');
+  $('.timer').html('0 seconds');
   // then, reset interval 
   clearInterval(start);
   // update 'moves' and 'stars' html
-  $('.moves').html('0 Moves');
+  $('.moves').html('Moves');
   $('.score-panel .stars li i').addClass('fa fa-star');
   // reshuffle icons, then fill squares
   shuffle(icons);

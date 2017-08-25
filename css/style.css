@@ -119,3 +119,7 @@ Styles for Score Panel
 	float: right;
 	cursor: pointer;
 }
+
+.score-panel .timer {
+	margin-left: 40px;
+}
