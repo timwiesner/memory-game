@@ -4,8 +4,6 @@ var play = $('.fa-play');
 var time = $('.timer');
 var star = $('.fa-star');
 
-// var displayStar = $('<i class="fa fa-star"></i>');
-
 
 var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
@@ -63,7 +61,7 @@ squares.click(function(){
 // define start outside of function so clearInterval can be called
 var start;
 // starts timer when first square is clicked
-squares.one('click', function(){
+squares.click(function(){
   // begins on first clicked square
   if (moves === 1){
     // set timer = new Date
@@ -120,11 +118,11 @@ restart.click(function(){
   moves = 0;
   score = 0;
   // reset timer
-  $('.timer').html('0 seconds');
+  time.html('0 seconds');
   // then, reset interval 
   clearInterval(start);
   // update 'moves' and 'stars' html
-  $('.moves').html('Moves');
+  $('.moves').html(moves + ' Moves');
   $('.score-panel .stars li i').addClass('fa fa-star');
   // reshuffle icons, then fill squares
   shuffle(icons);
