@@ -75,16 +75,20 @@ squares.one('click', function(){
     }, 1000);
   }
 });
-
+// To Do: Fix Star Reset
 // counts total number of moves
 function clickCounter(){
   moves++;
-  $('.moves').html(moves);
-  if (moves > 4 && moves < 8){
-    $('.one').detach();
-  } else if (moves > 8){
-    $('.two').detach();
-  }
+  if (moves === 1){
+    $('.moves').html(moves + " Move");
+  } else {
+    $('.moves').html(moves + " Moves");
+    if (moves > 4 && moves < 8){
+      star.first().removeClass();
+    } else if (moves > 8){
+      star.last().removeClass();
+    }
+  } 
 }
 
 //keeps track of total score
@@ -118,8 +122,8 @@ restart.click(function(){
   // then, reset interval 
   clearInterval(start);
   // update 'moves' and 'stars' html
-  $('.moves').html('0');
-  $('#stars').html('***');
+  $('.moves').html('0 Moves');
+  $('.score-panel .stars li i').addClass('fa fa-star');
   // reshuffle icons, then fill squares
   shuffle(icons);
   fillSquares(icons);
