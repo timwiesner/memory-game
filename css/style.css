@@ -34,57 +34,37 @@ button {
 	background-color: none;
 }
 
-/*
-Styles for Score Panel
-*/
-.score-panel {
-    text-align: left;
-    width: 345px;
-    margin-bottom: 10px;
-}
-
-.score-panel .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
-}
-
-.score-panel .stars li {
-    list-style: none;
-    display: inline-block;
-}
-
-.score-panel .restart {
-    float: right;
-    cursor: pointer;
-}
-
 
 /*
 Style for Deck of Cards
 */
-.deck {
-	max-width: 705px;
-	max-height: 710px;
+.board {
+	max-width: 623px;
+	max-height: 680px;
+	background: #f25f5c;
 	margin: auto;
 	overflow: auto;
-	background: #f25f5c;
 	border-radius: 3%;
+	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+	display: flex;
+	flex-wrap: wrap;
+	/*justify-content: space-between;*/
+	align-items: center;
 }
 
-.square {
-	width: 152px;
-	height: 152px;
+.board .square {
+	width: 135px;
+	height: 135px;
 	background: #247ba0;
+	border-radius: 15%;
 	float: left;
 	margin: 1.66%;
-	border-radius: 15%;
-	display: inline-block;
 	text-align: center;
+	cursor: pointer;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-.square i {
+.board .square i {
 	font-size: 40px;
 	line-height: 50px;
 	vertical-align: middle;
@@ -95,4 +75,34 @@ Style for Deck of Cards
 
 .show {
 	visibility: visible !important;
+
+}
+
+
+/*
+Styles for Score Panel
+*/
+.score-panel {
+	text-align: left;
+	width: 345px;
+	margin-bottom: 10px;
+}
+
+
+.score-panel .stars {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	margin: 0 5px 0 40px;
+}
+
+.score-panel .stars li {
+	list-style: none;
+	display: inline-block;
+}
+
+.score-panel .restart {
+	float: right;
+	cursor: pointer;
+	margin-right: 60px;
 }

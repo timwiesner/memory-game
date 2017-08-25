@@ -2,7 +2,10 @@ var squares = $('.square');
 var restart = $('.fa-refresh');
 var play = $('.fa-play');
 var time = $('#timer');
-var stars = $('#stars');
+var star = $('.fa-star');
+
+var displayStar = $('<i class="fa fa-star"></i>');
+
 
 var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
@@ -75,13 +78,17 @@ squares.one('click', function(){
 
 
 // counts total number of moves
+// TO DO: Fix stars
 function clickCounter(){
-  if (moves < 30){
-    $('#stars').html('***');
-  } else if (moves < 40){
-    $('#stars').html('**');
+  if (moves < 4){
+    star.html(displayStar);
+    star.html(displayStar);
+    star.html(displayStar);
+  } else if (moves < 8){
+    star.html(displayStar);
+    star.html(displayStar);
   } else {
-    $('#stars').html('*');
+    star.html(displayStar);
   }
   moves++;
   $('.moves').html(moves);
