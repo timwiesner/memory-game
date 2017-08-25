@@ -4,7 +4,6 @@ var play = $('.fa-play');
 var time = $('.timer');
 var star = $('.fa-star');
 
-
 var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
 var bitcoin = $('<i class="fa fa-btc" aria-hidden="true"></i>');
@@ -106,7 +105,6 @@ function trackScore(){
   }
 }
 
-// TO DO: Fix Buggy Clock
 // restart button handler and logic
 restart.click(function(){
   // remove 'show' class from all squares
