@@ -14,13 +14,12 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #70c1b3;
-	font-family: 'Nunito', sans-serif;
 }
 
-/*h1 {
-	color: #50514f;
-}*/
+body {
+	background-color: #70c1b3;
+	font-family: 'Nunito', sans-serif;
+}
 
 .container {
     display: flex;
@@ -29,11 +28,11 @@ body {
     flex-direction: column;
 }
 
-button {
-	border: none;
-	background-color: none;
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    /*color: #50514f;*/
 }
-
 
 /*
 Style for Deck of Cards
@@ -48,7 +47,6 @@ Style for Deck of Cards
 	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
 	display: flex;
 	flex-wrap: wrap;
-	/*justify-content: space-between;*/
 	align-items: center;
 }
 
@@ -78,6 +76,24 @@ Style for Deck of Cards
 }
 
 
+/*FIGURE OUT WHAT OF THIS TO KEEP AND WHAT GOES*/
+/*.deck .card.open {
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
+}*/
+
+
 /*
 Styles for Score Panel
 */
@@ -87,12 +103,11 @@ Styles for Score Panel
 	margin-bottom: 10px;
 }
 
-
 .score-panel .stars {
 	margin: 0;
 	padding: 0;
 	display: inline-block;
-	margin: 0 5px 0 40px;
+	margin: 0 5px 0 0;
 }
 
 .score-panel .stars li {
@@ -103,5 +118,4 @@ Styles for Score Panel
 .score-panel .restart {
 	float: right;
 	cursor: pointer;
-	margin-right: 60px;
 }
