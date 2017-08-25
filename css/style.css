@@ -17,7 +17,7 @@ body {
 }
 
 body {
-	background-color: #70c1b3;
+	background-color: #24a087;
 	font-family: 'Nunito', sans-serif;
 }
 
@@ -31,7 +31,6 @@ body {
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    /*color: #50514f;*/
 }
 
 /*
@@ -40,7 +39,7 @@ Style for Deck of Cards
 .board {
 	max-width: 623px;
 	max-height: 680px;
-	background: #f25f5c;
+	background: #dfdce3;
 	margin: auto;
 	overflow: auto;
 	border-radius: 3%;
@@ -53,7 +52,7 @@ Style for Deck of Cards
 .board .square {
 	width: 135px;
 	height: 135px;
-	background: #247ba0;
+	background: #243da0;
 	border-radius: 15%;
 	float: left;
 	margin: 1.66%;
@@ -74,10 +73,10 @@ Style for Deck of Cards
 .show {
 	visibility: visible !important;
 	transform: rotateY(0);
-	background: #02ccba;
+	background: #247ba0;
 	cursor: default;
 	padding: 0 5px 0 5px;
-	border-radius: 5%;
+	border-radius: 10%;
 }
 
 
