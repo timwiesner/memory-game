@@ -10,7 +10,7 @@ var bitcoin = $('<i class="fa fa-btc" aria-hidden="true"></i>');
 var sissors = $('<i class="fa fa-scissors" aria-hidden="true"></i>');
 var piper = $('<i class="fa fa-pied-piper-alt" aria-hidden="true"></i>');
 var space = $('<i class="fa fa-space-shuttle" aria-hidden="true"></i>');
-var cutlery = $('<i class="fa fa-cutlery" aria-hidden="true"></i>');
+var cutlery = $('<i class="fa fa-cutlery" aria-hidden="true"></i>'); 
 var camera = $('<i class="fa fa-camera-retro" aria-hidden="true"></i>');
 
 var bus2 = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
@@ -96,9 +96,9 @@ function trackScore(){
   // initiates upon eight matches
   if (score > 7){
     setTimeout(function(){
-      alert("Congratulations!\nYou won the game in " + time.html() + 
-        " seconds using " + moves + " moves with a score of " +
-        stars.html());
+      alert("Congratulations!\nsYou won the game in " + time.html() + 
+        " using " + moves + " moves with a score of " +
+        star.length + " stars");
     }, 1000);
     // stop timer
     clearInterval(start);
