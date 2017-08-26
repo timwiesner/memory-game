@@ -4,8 +4,10 @@
 		<meta charset="utf-8">
 		<title>Memory Game</title>
 		<link rel="stylesheet" href="css/style.css">
-		<script src="https://use.fontawesome.com/53faeb8ac8.js"></script>
+		<link rel="stylesheet" href="css/jquery.modal.css" type="text/css" media="screen" />
 		<link href="https://fonts.googleapis.com/css?family=Nunito:300" rel="stylesheet">
+		<script src="https://use.fontawesome.com/53faeb8ac8.js"></script>
+		<script src="js/jquery.modal.js" type="text/javascript" charset="utf-8"></script>
 
 	</head>
 	<body>
@@ -46,6 +48,10 @@
 			<div class="square"></div>
 			<div class="square"></div>
 			<div class="square"></div>
+		</div>
+
+		<div id="game-win" class="modal" style="display: none">
+			<p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>
 		</div>
 
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
