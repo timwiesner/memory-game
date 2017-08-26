@@ -1,18 +1,22 @@
-var squares = $('.square');
-var restart = $('.fa-refresh');
-var play = $('.fa-play');
-var time = $('.timer');
-var star = $('.fa-star');
+// Javascript Document
 
+// Define jQuery DOM variables
+var $squares = $('.square');
+var $restart = $('.fa-refresh');
+var $time = $('.timer');
+var $star = $('.fa-star');
+
+// Define FontAwesome Icons to be used for icons array
 var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
 var bitcoin = $('<i class="fa fa-btc" aria-hidden="true"></i>');
 var sissors = $('<i class="fa fa-scissors" aria-hidden="true"></i>');
 var piper = $('<i class="fa fa-pied-piper-alt" aria-hidden="true"></i>');
 var space = $('<i class="fa fa-space-shuttle" aria-hidden="true"></i>');
-var cutlery = $('<i class="fa fa-cutlery" aria-hidden="true"></i>'); 
+var cutlery = $('<i class="fa fa-cutlery" aria-hidden="true"></i>');
 var camera = $('<i class="fa fa-camera-retro" aria-hidden="true"></i>');
 
+// Define secondary FA variables to be matched
 var bus2 = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane2 = $('<i class="fa fa-plane" aria-hidden="true"></i>');
 var bitcoin2 = $('<i class="fa fa-btc" aria-hidden="true"></i>');
@@ -22,33 +26,38 @@ var space2 = $('<i class="fa fa-space-shuttle" aria-hidden="true"></i>');
 var cutlery2 = $('<i class="fa fa-cutlery" aria-hidden="true"></i>');
 var camera2 = $('<i class="fa fa-camera-retro" aria-hidden="true"></i>');
 
+// Define icons array
 var icons = [bus, plane, bitcoin, sissors, piper, space, cutlery, camera, bus2, plane2, bitcoin2, sissors2, piper2, space2, cutlery2, camera2];
 
-
+// Shuffles icons, then fills empty squares
 shuffle(icons);
 fillSquares(icons);
 
+// Set moves and score to zero
 var moves = 0;
 var score = 0;
-var clickedOne, clickedTwo;
 
+// 'Boxes' to hold clicked icons
+var $clickedOne, $clickedTwo;
 
-// shows icon upon click event
-squares.click(function(){
+// Shows icon upon click event
+// Inputs: user click on square
+// Outputs: calls clickCounter, answerOne and answerTwo to checkAnswer
+$squares.click(function(){
   clickCounter();
-  // determine if icon is already shown
+  // ensure icon is not already shown
   if (!$(this).children().hasClass('show')){
-    // check to see if clickedOne is undefined 
-    if (clickedOne === undefined) {
+    // check to see if clickedOne is undefined
+    if ($clickedOne === undefined) {
       // if yes, clickedOne = child i of square with class 'show'
-      clickedOne = $(this).children().addClass('show');
+      $clickedOne = $(this).children().addClass('show');
       // access clickedOne object, set answer = specific class
-      answerOne = $(clickedOne)['0'].classList[1];
+      answerOne = $($clickedOne)['0'].classList[1];
     } else {
       // else place clicked in clickedTwo
-      clickedTwo = $(this).children().addClass('show');
+      $clickedTwo = $(this).children().addClass('show');
       // set answer to specific class
-      answerTwo = $(clickedTwo)['0'].classList[1];
+      answerTwo = $($clickedTwo)['0'].classList[1];
       // use checkAnswers to determine if match
       checkAnswers(answerOne, answerTwo);
     }
@@ -57,10 +66,12 @@ squares.click(function(){
   }
 });
 
-// define start outside of function so clearInterval can be called
+// Starts timer when first square is clicked
+// Define start outside of function so clearInterval can be called
+// Inputs: user click on square
+// Outputs: time in seconds
 var start;
-// starts timer when first square is clicked
-squares.click(function(){
+$squares.click(function(){
   // begins on first clicked square
   if (moves === 1){
     // set timer = new Date
@@ -68,57 +79,68 @@ squares.click(function(){
     // set interval counter
     start = setInterval(function(){
       // select timer html, update + 1 second
-      time.html(Math.floor((new Date - timer) / 1000) + " seconds");
+      $time.html(Math.floor((new Date - timer) / 1000) + " seconds");
     }, 1000);
   }
 });
 
-// counts total number of moves
+// Counts total number of moves
+// Inputs: none
+// Outputs: display stars
 function clickCounter(){
+  // add one move
   moves++;
+  // display for singular move
   if (moves === 1){
     $('.moves').html(moves + " Move");
   } else {
+    // subsequent moves
     $('.moves').html(moves + " Moves");
+    // one star removed after 26 moves
     if (moves > 26 && moves < 32){
-      star.first().removeClass();
+      $star.first().removeClass();
+      // second star removed after 32 moves
     } else if (moves > 32){
-      star.last().removeClass();
+      $star.last().removeClass();
     }
-  } 
+  }
 }
 
-// TO DO: Fix Game-Win Message
-//keeps track of total score
+// Keeps track of total score
+// Inputs: none
+// Outputs: alert message upon completion
 function trackScore(){
   // adds one point to score--one for each match
   score++;
   // initiates upon eight matches
   if (score > 7){
     setTimeout(function(){
-      alert("Congratulations! You won the game!" + 
-        "\nTime: " + time.html() + 
-        "\nMoves: " + moves + 
-        "\nStars: " + star.length);
+      // game-winning alert
+      alert("Congratulations! You won the game!" +
+        "\nTime: " + $time.html() +
+        "\nMoves: " + moves +
+        "\nStars: " + $star.length);
     }, 1000);
     // stop timer
     clearInterval(start);
   }
 }
 
-// restart button handler and logic
-restart.click(function(){
+// Restart button handler and logic
+// Inputs: user click
+// Outputs: calls shuffle and fillSquares on icons
+$restart.click(function(){
   // remove 'show' class from all squares
   $('.square i').removeClass('show');
   // undefine both clickedOne and clickedTwo
-  clickedOne = undefined;
-  clickedTwo = undefined;
+  $clickedOne = undefined;
+  $clickedTwo = undefined;
   // reset moves and score to 0
   moves = 0;
   score = 0;
   // reset timer
-  time.html('0 seconds');
-  // then, reset interval 
+  $time.html('0 seconds');
+  // then, reset interval
   clearInterval(start);
   // update 'moves' and 'stars' html
   $('.moves').html(moves + ' Moves');
@@ -128,37 +150,43 @@ restart.click(function(){
   fillSquares(icons);
 });
 
-// checks answer one against answer two to look for match
+// Checks answer one against answer two to look for match
+// Inputs: answerOne and answerTwo in the form of icon classes
+// Outputs: calls trackScore if correct
 function checkAnswers(answerOne, answerTwo){
   if (answerOne === answerTwo) {
     // return clickedOne and clickedTwo to undefined state
-    clickedOne = undefined;
-    clickedTwo = undefined;
+    $clickedOne = undefined;
+    $clickedTwo = undefined;
     trackScore();
   } else {
     setTimeout(function(){
       // remove .show from clickedOne and clickedTwo
-      clickedOne.removeClass('show');
-      clickedTwo.removeClass('show');
+      $clickedOne.removeClass('show');
+      $clickedTwo.removeClass('show');
       // return to undefined state after .show is removed
-      clickedOne = undefined;
-      clickedTwo = undefined;
+      $clickedOne = undefined;
+      $clickedTwo = undefined;
     }, 500);
   }
 }
 
-// is called if player moves on the same square twice
+// Called if player moves on the same square twice
+// Inputs: none
+// Outputs: alert message
 function misClick(){
-  alert('Please click a blank square');
+  alert('Please click a blank square.');
   setTimeout(function(){
     // remove .show from clickedOne
-    clickedOne.removeClass('show');
+    $clickedOne.removeClass('show');
     // return to undefined state after .show is removed
-    clickedOne = undefined;
+    $clickedOne = undefined;
   }, 500);
 }
 
 // Takes 'icons' array as inputs using the Fisher-Yates Shuffle
+// Inputs: icons array
+// Outputs: shuffled array
 function shuffle(arr){
   // Starter code obtained from https://stackoverflow.com/a/2450954/
   var randomIndex, temporaryValue;
@@ -168,12 +196,15 @@ function shuffle(arr){
     arr[i - 1] = arr[randomIndex];
     arr[randomIndex] = temporaryValue;
   }
+  return arr;
 }
 
-// fills squares with appropriate shuffled icons
+// Fills squares with shuffled icons
+// Inputs: shuffled array
+// Outputs: shuffled icons array to squares
 function fillSquares(arr) {
   // loops through each square
-  squares.each(function(i) {
+  $squares.each(function(i) {
     // places shuffled icons in squares
     $(this).append(arr[i]);
   });
