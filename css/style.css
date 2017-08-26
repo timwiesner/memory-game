@@ -62,7 +62,7 @@ Style for Deck of Cards
 }
 
 .board .square i {
-	font-size: 40px;
+	font-size: 35px;
 	line-height: 50px;
 	vertical-align: middle;
 	margin-top: 42px;
@@ -75,7 +75,7 @@ Style for Deck of Cards
 	transform: rotateY(0);
 	background: #247ba0;
 	cursor: default;
-	padding: 0 5px 0 5px;
+	padding: 0 10px 0 10px;
 	border-radius: 10%;
 }
 
