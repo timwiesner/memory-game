@@ -96,9 +96,10 @@ function trackScore(){
   // initiates upon eight matches
   if (score > 7){
     setTimeout(function(){
-      alert("Congratulations!\nsYou won the game in " + time.html() + 
-        " using " + moves + " moves with a score of " +
-        star.length + " stars");
+      alert("Congratulations! You won the game!" + 
+        "\nTime: " + time.html() + 
+        "\nMoves: " + moves + 
+        "\nStars: " + star.length);
     }, 1000);
     // stop timer
     clearInterval(start);
