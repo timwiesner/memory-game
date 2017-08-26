@@ -1,9 +1,11 @@
-# memoryGame
+# Memory Game
 
 Welcome to Memory Game, a concentration game where, instead of using playing cards, a user flips browser-based squares to uncover FontAwesome Icons such as Bitcoin, Pied Piper, Ambulance, Space Shuttle, and more!
 
+This game serves as my final project for Udacity's Intro to Programming Nanogegree with a Front End Development specialization.
 
-Rules:
+
+## Rules:
 
 The game board consists of sixteen cards arranged randomly in a grid. The deck is made up of eight different pairs of cards, each with different symbols on one side. Each turn:
 
