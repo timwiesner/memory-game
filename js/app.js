@@ -67,9 +67,9 @@ $squares.click(function(){
 });
 
 // Starts timer when first square is clicked
-// Define start outside of function so clearInterval can be called
 // Inputs: user click on square
 // Outputs: time in seconds
+// Define start outside of function so clearInterval can be called
 var start;
 $squares.click(function(){
   // begins on first clicked square
@@ -115,7 +115,7 @@ function trackScore(){
   // initiates upon eight matches
   if (score > 7){
     setTimeout(function(){
-      // game-winning alert
+      game-winning alert
       alert("Congratulations! You won the game!" +
         "\nTime: " + $time.html() +
         "\nMoves: " + moves +
