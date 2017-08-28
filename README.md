@@ -4,6 +4,7 @@ Welcome to Memory Game, a concentration game where, instead of using playing car
 
 This game serves as my final project for Udacity's Intro to Programming Nanogegree with a Front End Development specialization.
 
+No dependencies are required--simply download and run index.html in your web browser to start!
 
 ## Rules:
 
