@@ -26,8 +26,12 @@ var space2 = $('<i class="fa fa-space-shuttle" aria-hidden="true"></i>');
 var cutlery2 = $('<i class="fa fa-cutlery" aria-hidden="true"></i>');
 var camera2 = $('<i class="fa fa-camera-retro" aria-hidden="true"></i>');
 
-// Define icons array
-var icons = [bus, plane, bitcoin, sissors, piper, space, cutlery, camera, bus2, plane2, bitcoin2, sissors2, piper2, space2, cutlery2, camera2];
+// Define icons arrays
+var icons = [bus, plane, bitcoin, sissors, piper, space, cutlery, camera];
+var iconsTwo = [bus2, plane2, bitcoin2, sissors2, piper2, space2, cutlery2, camera2];
+
+// Concat into 'icons'
+icons = icons.concat(iconsTwo);
 
 // Shuffles icons, then fills empty squares
 shuffle(icons);
@@ -114,12 +118,16 @@ function trackScore(){
   score++;
   // initiates upon eight matches
   if (score > 7){
+    // setTimeout(function(){
+    //   // game-winning alert
+    //   alert("Congratulations! You won the game!" +
+    //     "\nTime: " + $time.html() +
+    //     "\nMoves: " + moves +
+    //     "\nStars: " + $star.length);
+    // }, 1000);
     setTimeout(function(){
-      game-winning alert
-      alert("Congratulations! You won the game!" +
-        "\nTime: " + $time.html() +
-        "\nMoves: " + moves +
-        "\nStars: " + $star.length);
+      // game-winning alert
+      $('#myModal').css('display', 'block');
     }, 1000);
     // stop timer
     clearInterval(start);
