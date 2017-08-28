@@ -52,7 +52,7 @@ $squares.click(function(){
   // ensure icon is not already shown
   if (!$(this).children().hasClass('show')){
     // check to see if clickedOne is undefined
-    if ($clickedOne === undefined) {
+    if ($clickedOne === undefined){
       // if yes, clickedOne = child i of square with class 'show'
       $clickedOne = $(this).children().addClass('show');
       // access clickedOne object, set answer = specific class
@@ -130,6 +130,10 @@ function trackScore(){
       $('span').click(function(){
         $('#myModal').css('display', 'none');
       });
+      $('.fa-play').click(function(){
+        $('#myModal').css('display', 'none');
+        $restart.trigger('click');
+      });
     }, 1000);
     // stop timer
     clearInterval(start);
@@ -164,7 +168,7 @@ $restart.click(function(){
 // Inputs: answerOne and answerTwo in the form of icon classes
 // Outputs: calls trackScore if correct
 function checkAnswers(answerOne, answerTwo){
-  if (answerOne === answerTwo) {
+  if (answerOne === answerTwo){
     // return clickedOne and clickedTwo to undefined state
     $clickedOne = undefined;
     $clickedTwo = undefined;
@@ -200,7 +204,7 @@ function misClick(){
 function shuffle(arr){
   // Starter code obtained from https://stackoverflow.com/a/2450954/
   var randomIndex, temporaryValue;
-  for (var i = arr.length; i > 0; i--) {
+  for (var i = arr.length; i > 0; i--){
     randomIndex = Math.floor(Math.random() * i);
     temporaryValue = arr[i - 1];
     arr[i - 1] = arr[randomIndex];
@@ -212,9 +216,9 @@ function shuffle(arr){
 // Fills squares with shuffled icons
 // Inputs: shuffled array
 // Outputs: shuffled icons array to squares
-function fillSquares(arr) {
+function fillSquares(arr){
   // loops through each square
-  $squares.each(function(i) {
+  $squares.each(function(i){
     // places shuffled icons in squares
     $(this).append(arr[i]);
   });
