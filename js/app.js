@@ -110,6 +110,14 @@ function clickCounter(){
   }
 }
 
+// TODO: Update modal content
+// setTimeout(function(){
+//   alert("Congratulations! You won the game!" +
+//   "\nTime: " + $time.html() +
+//   "\nMoves: " + moves +
+//   "\nStars: " + $star.length);
+// }, 1000);
+
 // Keeps track of total score
 // Inputs: none
 // Outputs: alert message upon completion
@@ -118,16 +126,17 @@ function trackScore(){
   score++;
   // initiates upon eight matches
   if (score > 7){
-    // setTimeout(function(){
-    //   // game-winning alert
-    //   alert("Congratulations! You won the game!" +
-    //     "\nTime: " + $time.html() +
-    //     "\nMoves: " + moves +
-    //     "\nStars: " + $star.length);
-    // }, 1000);
     setTimeout(function(){
       // game-winning alert
       $('#myModal').css('display', 'block');
+      $('span').click(function(){
+        $('#myModal').css('display', 'none');
+      });
+      $(window).click(function(event){
+        if (event.target === modal) {
+          $('#myModal').css('display', 'none');
+        }
+      });
     }, 1000);
     // stop timer
     clearInterval(start);
