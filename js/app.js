@@ -101,10 +101,10 @@ function clickCounter(){
     // subsequent moves
     $('.moves').html(moves + " Moves");
     // one star removed after 26 moves
-    if (moves > 4 && moves < 6){
+    if (moves > 26 && moves < 32){
       $star.first().removeClass();
       // second star removed after 32 moves
-    } else if (moves > 6){
+    } else if (moves > 32){
       $star.last().removeClass();
     }
   }
