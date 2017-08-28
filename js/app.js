@@ -6,7 +6,7 @@ var $restart = $('.fa-refresh');
 var $time = $('.timer');
 var $star = $('.fa-star');
 
-// Define FontAwesome Icons to be used for icons array
+// Define FontAwesome icons to be used for icons array
 var bus = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane = $('<i class="fa fa-plane" aria-hidden="true"></i>');
 var bitcoin = $('<i class="fa fa-btc" aria-hidden="true"></i>');
@@ -16,7 +16,7 @@ var space = $('<i class="fa fa-space-shuttle" aria-hidden="true"></i>');
 var cutlery = $('<i class="fa fa-cutlery" aria-hidden="true"></i>');
 var camera = $('<i class="fa fa-camera-retro" aria-hidden="true"></i>');
 
-// Define secondary FA variables to be matched
+// Define secondary FA icons to be matched
 var bus2 = $('<i class="fa fa-ambulance" aria-hidden="true"></i>');
 var plane2 = $('<i class="fa fa-plane" aria-hidden="true"></i>');
 var bitcoin2 = $('<i class="fa fa-btc" aria-hidden="true"></i>');
@@ -110,32 +110,25 @@ function clickCounter(){
   }
 }
 
-// TODO: Update modal content
-// setTimeout(function(){
-//   alert("Congratulations! You won the game!" +
-//   "\nTime: " + $time.html() +
-//   "\nMoves: " + moves +
-//   "\nStars: " + $star.length);
-// }, 1000);
-
+// TO DO: Stars don't display correctly
 // Keeps track of total score
 // Inputs: none
 // Outputs: alert message upon completion
 function trackScore(){
+  // updates time, move, and star count
+  $('.fTime').html($('span.timer')[0].textContent);
+  $('.fMoves').html(moves);
+  $('.fStars').html($star.length);
   // adds one point to score--one for each match
   score++;
   // initiates upon eight matches
   if (score > 7){
+    // updates time only once final score reached
     setTimeout(function(){
       // game-winning alert
       $('#myModal').css('display', 'block');
       $('span').click(function(){
         $('#myModal').css('display', 'none');
-      });
-      $(window).click(function(event){
-        if (event.target === modal) {
-          $('#myModal').css('display', 'none');
-        }
       });
     }, 1000);
     // stop timer
