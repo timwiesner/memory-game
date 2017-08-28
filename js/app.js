@@ -101,16 +101,16 @@ function clickCounter(){
     // subsequent moves
     $('.moves').html(moves + " Moves");
     // one star removed after 26 moves
-    if (moves > 26 && moves < 32){
+    if (moves > 4 && moves < 6){
       $star.first().removeClass();
       // second star removed after 32 moves
-    } else if (moves > 32){
+    } else if (moves > 6){
       $star.last().removeClass();
     }
   }
 }
 
-// TO DO: Stars don't display correctly
+
 // Keeps track of total score
 // Inputs: none
 // Outputs: alert message upon completion
@@ -118,7 +118,7 @@ function trackScore(){
   // updates time, move, and star count
   $('.fTime').html($('span.timer')[0].textContent);
   $('.fMoves').html(moves);
-  $('.fStars').html($star.length);
+  $('.fStars').html($('.fa-star').length);
   // adds one point to score--one for each match
   score++;
   // initiates upon eight matches
