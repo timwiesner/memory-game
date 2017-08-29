@@ -56,18 +56,18 @@ $squares.click(function() {
     if ($clickedOne === undefined) {
       // if yes, clickedOne = child i of square with class 'show'
       $clickedOne = $(this).children().addClass('show');
+      $clickedOne.off('click');
       // access clickedOne object, set answer = specific class
       answerOne = $($clickedOne)['0'].classList[1];
     } else {
       // else place clicked in clickedTwo
       $clickedTwo = $(this).children().addClass('show');
+      $clickedTwo.off('click');
       // set answer to specific class
       answerTwo = $($clickedTwo)['0'].classList[1];
       // use checkAnswers to determine if match
       checkAnswers(answerOne, answerTwo);
     }
-  } else {
-    misClick();
   }
 });
 
