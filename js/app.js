@@ -48,9 +48,10 @@ let $clickedOne, $clickedTwo;
 // Inputs: user click on square
 // Outputs: calls clickCounter, answerOne and answerTwo to checkAnswer
 $squares.click(function() {
-  clickCounter();
   // ensure icon is not already shown
   if (!$(this).children().hasClass('show')) {
+    // count clicks if icon not shown
+    clickCounter();
     // check to see if clickedOne is undefined
     if ($clickedOne === undefined) {
       // if yes, clickedOne = child i of square with class 'show'
