@@ -68,7 +68,7 @@ $squares.click(function() {
       // use checkAnswers to determine if match
       checkAnswers(answerOne, answerTwo);
     }
-  }
+  } 
 });
 
 // Starts timer when first square is clicked
@@ -186,18 +186,6 @@ function checkAnswers(answerOne, answerTwo) {
   }
 }
 
-// Called if player moves on the same square twice
-// Inputs: none
-// Outputs: alert message
-function misClick() {
-  alert('Please click a blank square.');
-  setTimeout(function() {
-    // remove .show from clickedOne
-    $clickedOne.removeClass('show');
-    // return to undefined state after .show is removed
-    $clickedOne = undefined;
-  }, 500);
-}
 
 // Takes 'icons' array as inputs using the Fisher-Yates Shuffle
 // Inputs: icons array
